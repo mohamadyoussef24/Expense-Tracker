@@ -12,5 +12,18 @@ $(document).ready(function() {
         return;
       }
       
+       
+      // Create expense row
+      let row = $('<tr>');
+      row.append($('<td>').text(expenseName));
+      row.append($('<td>').text(expenseAmount.toFixed(2)));
+      
+      // Create delete button
+      let deleteButton = $('<button>').addClass('delete-btn').text('Delete');
+      deleteButton.click(function() {
+        $(this).closest('tr').remove();
+        updateTotalAmount();
+      });
+      row.append($('<td>').append(deleteButton));
       
      
