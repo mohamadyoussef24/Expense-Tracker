@@ -25,5 +25,24 @@ $(document).ready(function() {
         updateTotalAmount();
       });
       row.append($('<td>').append(deleteButton));
+       // Add row to table
+       $('#expense-table tbody').append(row);
       
+       // Clear input fields
+       $('#expense-name').val('');
+       $('#expense-amount').val('');
+       
+       // Update total amount
+       updateTotalAmount();
+     });
+     
+     // Update total amount
+     function updateTotalAmount() {
+       let total = 0;
+       $('#expense-table tbody tr').each(function() {
+         total += parseFloat($(this).find('td:nth-child(2)').text());
+       });
+       $('#total-amount').text(total.toFixed(2));
+     }
+   });
      
